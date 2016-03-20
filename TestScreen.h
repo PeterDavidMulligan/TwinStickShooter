@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 ///	Author: Peter Mulligan
 ///	Date: 14/03/16
-///	Last Edit: 14/03/16
+///	Last Edit: 20/03/16
 ////////////////////////////////////////////////////////////
 #ifndef TESTSCREEN_HEADER
 #define TESTSCREEN_HEADER
@@ -11,6 +11,9 @@
 ////////////////////////////////////////////////////////////
 #include "Gamepad.h"
 #include "Screen.h"
+#include "TwinStickShooter\TextureManager.h"
+#include "TwinStickShooter\SoundManager.h"
+#include "TwinStickShooter\FontManager.h"
 
 ////////////////////////////////////////////////////////////
 ///	\brief Screen subclass for running tests
@@ -24,23 +27,24 @@ namespace goo
 		////////////////////////////////////////////////////////////
 		// Member Variables
 		////////////////////////////////////////////////////////////
-		sf::Texture m_texture;
+		TextureManager m_textures;
 		sf::Sprite m_sprite;
 		sf::Vector2f m_velocity;
-		float m_speed = 2.5;
-		float m_rotationSpeed = 15;
+		float m_speed = 5.0;
+		float m_rotationSpeed = m_speed * 150;
 		float m_heading = 0;
 
 		////////////////////////////////////////////////////////////
 		// Private Functions
 		////////////////////////////////////////////////////////////
 		void setFacing(const sf::Vector2f target);
-		void rotateToHeading();
+		void rotateToHeading(sf::Time elapsedTime);
 	public:
 		////////////////////////////////////////////////////////////
 		// Constructor
 		////////////////////////////////////////////////////////////
-		TestScreen(sf::RenderWindow& window);
+		TestScreen(sf::RenderWindow& window, goo::TextureManager& textures,
+			goo::SoundManager& sounds, goo::FontManager& fonts);
 
 		////////////////////////////////////////////////////////////
 		// Public Functions

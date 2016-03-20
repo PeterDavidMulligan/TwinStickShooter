@@ -13,49 +13,100 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\goo">
+      <UniqueIdentifier>{71384640-4049-4cf5-b8c8-c455fd8d72b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\goo\Screens">
+      <UniqueIdentifier>{1379ef9a-44c6-4c15-bcce-72c7136688c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\goo">
+      <UniqueIdentifier>{170cc0d8-c91b-423a-b13b-35405933044f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\goo\Screens">
+      <UniqueIdentifier>{b158b727-f3ec-43c0-803d-dfde83666241}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\goo\Input">
+      <UniqueIdentifier>{862c1b63-0b1b-4c19-bd32-cd35a9f735ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\goo\Input">
+      <UniqueIdentifier>{df74bc41-7d89-4364-bf1b-1a933fe0364b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Utility">
+      <UniqueIdentifier>{b5020a0e-ebdd-430f-834f-a0e34f0373b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures">
+      <UniqueIdentifier>{d1f03b42-d08d-4752-ad50-5d0d9d42d77e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\goo\Assets">
+      <UniqueIdentifier>{2f2efeba-1eef-42a4-99c6-78459110b992}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\goo\Assets">
+      <UniqueIdentifier>{74acf4bd-0d3f-41b2-b9f8-24c8b0d8497b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\goo\Collections">
+      <UniqueIdentifier>{6f6310dd-e381-4cd0-b369-c5acd1a722d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\TestScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\ControllerDebugScreen.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\goo\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Screen.cpp">
+      <Filter>Source Files\goo\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TestScreen.cpp">
+      <Filter>Source Files\goo\Screens</Filter>
     </ClCompile>
     <ClCompile Include="..\Gamepad.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\goo\Input</Filter>
     </ClCompile>
     <ClCompile Include="..\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Screen.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source Files\goo\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files\goo\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Source Files\goo\Assets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ControllerDebugScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Gamepad.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\goo\Screens</Filter>
     </ClInclude>
     <ClInclude Include="..\Screen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Screens.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\goo\Screens</Filter>
     </ClInclude>
     <ClInclude Include="..\TestScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\goo\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Gamepad.h">
+      <Filter>Header Files\goo\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Header Files\goo\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Header Files\goo\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>Header Files\goo\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Screens.h">
+      <Filter>Header Files\goo\Collections</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Comment_Template.txt">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\Utility</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Assets\Art\test.png">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\Textures</Filter>
     </Image>
   </ItemGroup>
 </Project>

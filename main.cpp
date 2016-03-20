@@ -10,6 +10,9 @@
 #include <iostream>
 #include "SFML\Graphics.hpp"
 #include "Screens.h"
+#include "TwinStickShooter\TextureManager.h"
+#include "TwinStickShooter\FontManager.h"
+#include "TwinStickShooter\SoundManager.h"
 
 ////////////////////////////////////////////////////////////
 // Global Variables
@@ -27,11 +30,16 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Twin Stick" /*, sf::Style::Fullscreen*/);
 	window.setVerticalSyncEnabled(true);
 
+	//Resource managers
+	goo::TextureManager textureManager;
+	goo::SoundManager soundManager;
+	goo::FontManager fontManager;
+	
 	//Screens Setup
 	std::vector<goo::Screen*> screenContainer;	//Contains all the screens
-	goo::TestScreen testScreen(window);
+	goo::TestScreen testScreen(window, textureManager, soundManager, fontManager);
 	screenContainer.push_back(&testScreen);
-	goo::ControllerDebugScreen controllerDebugScreen(window);
+	goo::ControllerDebugScreen controllerDebugScreen(window, textureManager, soundManager, fontManager);
 	screenContainer.push_back(&controllerDebugScreen);
 	
 	//Clock setup & FPS setup

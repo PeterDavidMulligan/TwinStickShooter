@@ -10,6 +10,9 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML\Graphics.hpp>
+#include "TwinStickShooter\TextureManager.h"
+#include "TwinStickShooter\SoundManager.h"
+#include "TwinStickShooter\FontManager.h"
 
 namespace goo
 {
@@ -24,6 +27,9 @@ namespace goo
 		// Protected Variables
 		////////////////////////////////////////////////////////////
 		sf::RenderWindow& m_window;
+		goo::TextureManager& m_textures;
+		goo::SoundManager& m_sounds;
+		goo::FontManager& m_fonts;
 		
 		////////////////////////////////////////////////////////////
 		// Protected Functions
@@ -33,7 +39,9 @@ namespace goo
 		////////////////////////////////////////////////////////////
 		// Constructor
 		////////////////////////////////////////////////////////////
-		Screen(sf::RenderWindow& window);
+		Screen(sf::RenderWindow& window, goo::TextureManager& textures,
+			goo::SoundManager& m_sounds, goo::FontManager& fonts);
+
 		////////////////////////////////////////////////////////////
 		// Public Virtual Functions
 		////////////////////////////////////////////////////////////

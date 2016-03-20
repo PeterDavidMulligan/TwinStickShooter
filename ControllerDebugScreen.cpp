@@ -14,8 +14,9 @@
 ////////////////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////////////////
-goo::ControllerDebugScreen::ControllerDebugScreen(sf::RenderWindow& window) :
-goo::Screen(window)
+goo::ControllerDebugScreen::ControllerDebugScreen(sf::RenderWindow& window, goo::TextureManager& textures,
+	goo::SoundManager& sounds, goo::FontManager& fonts) :
+	Screen(window, textures, sounds, fonts)
 {
 	initialise();
 }

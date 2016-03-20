@@ -12,8 +12,9 @@
 ////////////////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////////////////
-goo::Screen::Screen(sf::RenderWindow& window) :
-m_window(window) {}
+goo::Screen::Screen(sf::RenderWindow& window, goo::TextureManager& textures,
+	goo::SoundManager& sounds, goo::FontManager& fonts) :
+m_window(window), m_textures (textures), m_sounds(sounds), m_fonts(fonts){}
 
 ////////////////////////////////////////////////////////////
 // Private Functions

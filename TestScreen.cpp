@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 ///	Author: Peter Mulligan
 ///	Date: 14/03/16
-///	Last Edit: 14/03/16
+///	Last Edit: 20/03/16
 ////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////
@@ -13,10 +13,12 @@
 ////////////////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////////////////
-goo::TestScreen::TestScreen(sf::RenderWindow& window) :
-goo::Screen(window)
+goo::TestScreen::TestScreen(sf::RenderWindow& window, goo::TextureManager& textures,
+	goo::SoundManager& sounds, goo::FontManager& fonts) :
+	Screen(window, textures, sounds, fonts)
 {
 	initialise();
+	
 }
 
 ////////////////////////////////////////////////////////////
@@ -29,11 +31,8 @@ goo::Screen(window)
 ////////////////////////////////////////////////////////////
 void goo::TestScreen::initialise()
 {
-	if (!m_texture.loadFromFile("../Assets/Art/test.png"))
-	{
-		std::cout << "Error" << std::endl;
-	}
-	m_sprite.setTexture(m_texture);
+	m_textures.load("test", "../Assets/Art/test.png");
+	m_sprite.setTexture(m_textures.get("test"));
 	m_sprite.setOrigin(m_sprite.getLocalBounds().width / 2, m_sprite.getLocalBounds().height / 2);
 	m_sprite.setPosition(m_window.getSize().x / 2, m_window.getSize().y / 2);
 }
@@ -90,7 +89,7 @@ void goo::TestScreen::update(sf::Time elapsedTime)
 		setFacing(sf::Vector2f(m_sprite.getPosition().x - rightX, m_sprite.getPosition().y - rightY));
 	}
 	m_sprite.move(m_velocity.x * elapsedTime.asSeconds() * m_speed, m_velocity.y * elapsedTime.asSeconds() * m_speed);
-	rotateToHeading();
+	rotateToHeading(elapsedTime);
 	
 
 }
@@ -101,7 +100,7 @@ void goo::TestScreen::update(sf::Time elapsedTime)
 ////////////////////////////////////////////////////////////
 void goo::TestScreen::draw()
 {
-	m_window.clear(sf::Color::White);
+	m_window.clear(sf::Color::Black);
 	m_window.draw(m_sprite);
 }
 
@@ -136,19 +135,19 @@ void goo::TestScreen::setFacing(const sf::Vector2f target)
 /// the Tower's heading value
 ///
 ////////////////////////////////////////////////////////////
-void goo::TestScreen::rotateToHeading()
+void goo::TestScreen::rotateToHeading(sf::Time elapsedTime)
 {
 	int degrees = m_sprite.getRotation();
 	if (degrees != m_heading)//If it's not looking where it should be...
 	{
 		int rotation = m_heading - degrees % 360;//Check how far it has left to go
 		int signOfRotation = std::copysign(1.0f, rotation); //Check if that's shorter clockwise or not
-		int rotationSpeed = m_rotationSpeed;	//Set rotation speed to towers speed
+		int rotationSpeed = m_rotationSpeed * elapsedTime.asSeconds();	//Set rotation speed to towers speed
 		if (std::abs(rotation) <= rotationSpeed)
 		{
 			//If the tower is leass than a turn away,
 			//reduce the turn speed to stop 'flip/flop'
-			rotationSpeed = 1;
+			rotationSpeed = 1 * elapsedTime.asSeconds();
 		}
 		if (std::abs(rotation) < 180)
 		{
