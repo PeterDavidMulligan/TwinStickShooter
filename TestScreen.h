@@ -14,6 +14,7 @@
 #include "TwinStickShooter\TextureManager.h"
 #include "TwinStickShooter\SoundManager.h"
 #include "TwinStickShooter\FontManager.h"
+#include "Thor\Particles.hpp"
 
 ////////////////////////////////////////////////////////////
 ///	\brief Screen subclass for running tests
@@ -27,8 +28,9 @@ namespace goo
 		////////////////////////////////////////////////////////////
 		// Member Variables
 		////////////////////////////////////////////////////////////
-		TextureManager m_textures;
-		sf::Sprite m_sprite;
+		thor::ParticleSystem m_particleSystem;
+		thor::UniversalEmitter m_particleEmitter;
+		sf::Sprite m_playerSprite;
 		sf::Vector2f m_velocity;
 		float m_speed = 5.0;
 		float m_rotationSpeed = m_speed * 150;

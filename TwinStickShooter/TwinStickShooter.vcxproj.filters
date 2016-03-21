@@ -105,7 +105,10 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Assets\Art\test.png">
+    <Image Include="..\Assets\Art\particle.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="..\Assets\Art\player.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
   </ItemGroup>
