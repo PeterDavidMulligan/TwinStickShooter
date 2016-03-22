@@ -40,13 +40,13 @@ namespace goo
 		////////////////////////////////////////////////////////////
 		// Constructor
 		////////////////////////////////////////////////////////////
-		TestScreen(sf::RenderWindow& window);
+		TestScreen(sf::RenderWindow& window, goo::AssetManager& assets, int& currentScreen);
 
 		////////////////////////////////////////////////////////////
 		// Public Functions
 		////////////////////////////////////////////////////////////
 		void initialise();
-		void input(sf::Event e, int* currentScreen);
+		void input(sf::Event e);
 		void update(sf::Time elapsedTime);
 		void draw();
 	};

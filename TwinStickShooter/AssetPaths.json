@@ -1,0 +1,19 @@
+{
+    "Assets": 
+    {
+        "Textures": 
+        [
+            { "Name": "Particle", "Path": "../Assets/Art/Particle.png" },
+            { "Name": "Player", "Path": "../Assets/Art/Player.png" }
+        ],
+        "Fonts": 
+        [
+            { "Name": "KenPixel", "Path": "../Assets/Fonts/KenPixel.ttf" }
+        ],
+        "Sounds": 
+        [
+            { "Name": "Test", "Path": "../Assets/Sounds/Test.wav" }
+        ]
+    }
+
+}

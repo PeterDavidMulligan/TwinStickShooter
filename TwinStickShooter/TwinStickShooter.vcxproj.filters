@@ -13,49 +13,129 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\JSON">
+      <UniqueIdentifier>{4387bce9-d99c-49c7-91df-ef0f72980526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Screens">
+      <UniqueIdentifier>{fcb0722d-18c7-48da-bf10-5899089c221b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Assets">
+      <UniqueIdentifier>{9db04243-6757-46ed-96d4-7916b9ca708e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures">
+      <UniqueIdentifier>{b2ec0f73-bcc6-4e2e-85b3-45bb3347a473}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Utility Files">
+      <UniqueIdentifier>{5fabd5b7-7673-491d-958f-d2ff0a9b441a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Screens">
+      <UniqueIdentifier>{8a39f0b6-cb46-4ed4-b5b8-22384b35c334}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Assets">
+      <UniqueIdentifier>{0c14d8a0-1b6e-4ae5-98e3-919b1bf5a2d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\JSON">
+      <UniqueIdentifier>{434343ed-989a-437e-ad75-7cf211f5ef08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{0fcea7f9-39b3-46bb-a418-fba9bbe5710c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{51f70934-b512-41fd-be32-88aebcea3c7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\JSON Files">
+      <UniqueIdentifier>{5fdd77b7-449c-421e-b9ff-b5e4c5cfe110}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\TestScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ControllerDebugScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Gamepad.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Screen.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\TestScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ControllerDebugScreen.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="jsoncpp.cpp">
+      <Filter>Source Files\JSON</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Gamepad.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetLoader.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Source Files\Assets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\ControllerDebugScreen.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="JSON\json.h">
+      <Filter>Header Files\JSON</Filter>
     </ClInclude>
-    <ClInclude Include="..\Gamepad.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="JSON\json-forwards.h">
+      <Filter>Header Files\JSON</Filter>
     </ClInclude>
-    <ClInclude Include="..\Screen.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="version.h">
+      <Filter>Header Files\JSON</Filter>
     </ClInclude>
     <ClInclude Include="..\Screens.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Screen.h">
+      <Filter>Header Files\Screens</Filter>
     </ClInclude>
     <ClInclude Include="..\TestScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Screens</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\Comment_Template.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
+    <ClInclude Include="FontManager.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ControllerDebugScreen.h">
+      <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Gamepad.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetLoader.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Assets\Art\test.png">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\Textures</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Comment_Template.txt">
+      <Filter>Resource Files\Utility Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AssetPaths.json">
+      <Filter>Resource Files\JSON Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

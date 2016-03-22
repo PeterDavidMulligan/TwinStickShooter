@@ -10,7 +10,7 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML\Graphics.hpp>
-
+#include "TwinStickShooter\AssetManager.h"
 namespace goo
 {
 	////////////////////////////////////////////////////////////
@@ -24,6 +24,8 @@ namespace goo
 		// Protected Variables
 		////////////////////////////////////////////////////////////
 		sf::RenderWindow& m_window;
+		int& m_currentScreen;
+		goo::AssetManager& m_assets;
 		
 		////////////////////////////////////////////////////////////
 		// Protected Functions
@@ -33,12 +35,12 @@ namespace goo
 		////////////////////////////////////////////////////////////
 		// Constructor
 		////////////////////////////////////////////////////////////
-		Screen(sf::RenderWindow& window);
+		Screen(sf::RenderWindow& window, goo::AssetManager& assets, int& currentScreen);
 		////////////////////////////////////////////////////////////
 		// Public Virtual Functions
 		////////////////////////////////////////////////////////////
 		virtual void initialise() = 0;
-		virtual void input(sf::Event e, int* currentScreen) = 0;
+		virtual void input(sf::Event e) = 0;
 		virtual void update(sf::Time elapsedTime) = 0;
 		virtual void draw() = 0;
 	};

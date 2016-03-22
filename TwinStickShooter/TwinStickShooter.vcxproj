@@ -75,6 +75,12 @@
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\Screen.cpp" />
     <ClCompile Include="..\TestScreen.cpp" />
+    <ClCompile Include="AssetLoader.cpp" />
+    <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="jsoncpp.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ControllerDebugScreen.h" />
@@ -82,12 +88,23 @@
     <ClInclude Include="..\Screen.h" />
     <ClInclude Include="..\Screens.h" />
     <ClInclude Include="..\TestScreen.h" />
+    <ClInclude Include="AssetLoader.h" />
+    <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="FontManager.h" />
+    <ClInclude Include="JSON\json-forwards.h" />
+    <ClInclude Include="JSON\json.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="version.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Comment_Template.txt" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Assets\Art\test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AssetPaths.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

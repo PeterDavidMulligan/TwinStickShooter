@@ -10,11 +10,7 @@
 #include <iostream>
 #include "SFML\Graphics.hpp"
 #include "Screens.h"
-
-////////////////////////////////////////////////////////////
-// Global Variables
-////////////////////////////////////////////////////////////
-int currentScreen = 0;
+#include "TwinStickShooter\AssetManager.h"
 
 ////////////////////////////////////////////////////////////
 ///	\brief main is the root function for the game
@@ -27,11 +23,15 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Twin Stick" /*, sf::Style::Fullscreen*/);
 	window.setVerticalSyncEnabled(true);
 
+	//Asset repository
+	goo::AssetManager assets;
+
 	//Screens Setup
+	int currentScreen = 1;
 	std::vector<goo::Screen*> screenContainer;	//Contains all the screens
-	goo::TestScreen testScreen(window);
+	goo::TestScreen testScreen(window, assets, currentScreen);
 	screenContainer.push_back(&testScreen);
-	goo::ControllerDebugScreen controllerDebugScreen(window);
+	goo::ControllerDebugScreen controllerDebugScreen(window, assets, currentScreen);
 	screenContainer.push_back(&controllerDebugScreen);
 	
 	//Clock setup & FPS setup
@@ -46,7 +46,7 @@ int main()
 		sf::Event e;
 		while (window.pollEvent(e))
 		{	//Send input to the current screen
-			screenContainer.at(currentScreen)->input(e, &currentScreen);
+			screenContainer.at(currentScreen)->input(e);
 		}
 
 		//GAME LOOP

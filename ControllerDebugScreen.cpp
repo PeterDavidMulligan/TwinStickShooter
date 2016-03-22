@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 ///	Author: Peter Mulligan
 ///	Date: 19/03/16
-///	Last Edit: 19/03/16
+///	Last Edit: 22/03/16
 ////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////
@@ -14,8 +14,8 @@
 ////////////////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////////////////
-goo::ControllerDebugScreen::ControllerDebugScreen(sf::RenderWindow& window) :
-goo::Screen(window)
+goo::ControllerDebugScreen::ControllerDebugScreen(sf::RenderWindow& window, goo::AssetManager& assets, int& currentScreen) :
+goo::Screen(window, assets, currentScreen)
 {
 	initialise();
 }
@@ -38,11 +38,13 @@ goo::ControllerDebugScreen::~ControllerDebugScreen()
 ////////////////////////////////////////////////////////////
 void goo::ControllerDebugScreen::initialise()
 {
-	//Load font for outputting m_displayedController's input values
-	if (!m_font.loadFromFile("../Assets/Fonts/KenPixel.ttf"))
-	{
-		std::cout << "ControllerDebugScreen.cpp : Failed to load file 'KenPixel.ttf'" << std::endl;
-	}
+	////Load font for outputting m_displayedController's input values
+	//if (!m_font.loadFromFile("../Assets/Fonts/KenPixel.ttf"))
+	//{
+	//	std::cout << "ControllerDebugScreen.cpp : Failed to load file 'KenPixel.ttf'" << std::endl;
+	//}
+
+	m_fontPtr = &m_assets.getFont("KenPixel");
 
 	//Calculate how many texts are needed
 	int buttonCount = sf::Joystick::getButtonCount(m_displayedController);
@@ -52,7 +54,7 @@ void goo::ControllerDebugScreen::initialise()
 	for (int i = 0; i < buttonCount; i++)
 	{
 		m_buttonTexts[i] = sf::Text();
-		m_buttonTexts[i].setFont(m_font);
+		m_buttonTexts[i].setFont(*m_fontPtr);
 		m_buttonTexts[i].setColor(sf::Color::Red);
 		m_buttonTexts[i].setScale(sf::Vector2f(0.75, 0.75));
 		//Create the string using a stream string to
@@ -70,7 +72,7 @@ void goo::ControllerDebugScreen::initialise()
 	for (int i = 0; i < sf::Joystick::AxisCount; i++)
 	{
 		m_buttonTexts[buttonCount + i] = sf::Text();
-		m_buttonTexts[buttonCount + i].setFont(m_font);
+		m_buttonTexts[buttonCount + i].setFont(*m_fontPtr);
 		m_buttonTexts[buttonCount + i].setColor(sf::Color::Red);
 		m_buttonTexts[i].setScale(sf::Vector2f(0.75, 0.75));
 		//Create the string using a stream string to
@@ -97,7 +99,7 @@ void goo::ControllerDebugScreen::initialise()
 /// the current screen
 ///
 ////////////////////////////////////////////////////////////
-void goo::ControllerDebugScreen::input(sf::Event e, int* currentScreen)
+void goo::ControllerDebugScreen::input(sf::Event e)
 {
 	checkForScreenClose(e);
 }

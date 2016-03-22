@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 ///	Author: Peter Mulligan
 ///	Date: 14/03/16
-///	Last Edit: 14/03/16
+///	Last Edit: 22/03/16
 ////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////
@@ -13,8 +13,8 @@
 ////////////////////////////////////////////////////////////
 // Constructor
 ////////////////////////////////////////////////////////////
-goo::TestScreen::TestScreen(sf::RenderWindow& window) :
-goo::Screen(window)
+goo::TestScreen::TestScreen(sf::RenderWindow& window, goo::AssetManager& assets, int& currentScreen) :
+goo::Screen(window, assets, currentScreen)
 {
 	initialise();
 }
@@ -29,11 +29,11 @@ goo::Screen(window)
 ////////////////////////////////////////////////////////////
 void goo::TestScreen::initialise()
 {
-	if (!m_texture.loadFromFile("../Assets/Art/test.png"))
+	/*if (!m_texture.loadFromFile("../Assets/Art/test.png"))
 	{
 		std::cout << "Error" << std::endl;
-	}
-	m_sprite.setTexture(m_texture);
+	}*/
+	m_sprite.setTexture(m_assets.getTexture("Player"));
 	m_sprite.setOrigin(m_sprite.getLocalBounds().width / 2, m_sprite.getLocalBounds().height / 2);
 	m_sprite.setPosition(m_window.getSize().x / 2, m_window.getSize().y / 2);
 }
@@ -47,7 +47,7 @@ void goo::TestScreen::initialise()
 /// the current screen
 ///
 ////////////////////////////////////////////////////////////
-void goo::TestScreen::input(sf::Event e, int* currentScreen)
+void goo::TestScreen::input(sf::Event e)
 {
 	checkForScreenClose(e);
 	float leftX = round(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X));
@@ -91,8 +91,6 @@ void goo::TestScreen::update(sf::Time elapsedTime)
 	}
 	m_sprite.move(m_velocity.x * elapsedTime.asSeconds() * m_speed, m_velocity.y * elapsedTime.asSeconds() * m_speed);
 	rotateToHeading();
-	
-
 }
 
 ////////////////////////////////////////////////////////////
