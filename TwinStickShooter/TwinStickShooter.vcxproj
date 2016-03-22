@@ -79,6 +79,7 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="jsoncpp.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
@@ -93,6 +94,7 @@
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="JSON\json-forwards.h" />
     <ClInclude Include="JSON\json.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="version.h" />

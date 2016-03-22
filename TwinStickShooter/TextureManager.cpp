@@ -84,10 +84,16 @@ const sf::Texture& goo::TextureManager::get(std::string id) const
 ///	\brief Loads all the textures listed in the JSON file
 /// "AssetPaths.json"
 ///
+///	\param debug (optional) Prints how many textures are in
+/// the map before and after load to console
+///
 ////////////////////////////////////////////////////////////
-void goo::TextureManager::loadTextures()
+void goo::TextureManager::loadTextures(bool debug)
 {
-	std::cout << "Textures before load : " << m_textureMap.size() << std::endl;
+	if (debug)
+	{
+		std::cout << "Textures before load : " << m_textureMap.size() << std::endl;
+	}
 	//Store json file in JSONValue m_root
 	readJSONFile("AssetPaths.json");
 	//check how many elements are under the 'Textures' heading
@@ -102,5 +108,8 @@ void goo::TextureManager::loadTextures()
 		m_paths[i] = m_root["Assets"]["Textures"][i]["Path"].asString().c_str();
 		load(m_names[i], m_paths[i]);
 	}
-	std::cout << "Textures after load : " << m_textureMap.size() << std::endl;
+	if (debug)
+	{
+		std::cout << "Textures before load : " << m_textureMap.size() << std::endl;
+	}
 }

@@ -83,10 +83,16 @@ const sf::SoundBuffer& goo::SoundManager::get(std::string id) const
 ///	\brief Loads all the sounds listed in the JSON file
 /// "AssetPaths.json"
 ///
+///	\param debug (optional) Prints how many sounds are in the
+/// map before and after load to console
+///
 ////////////////////////////////////////////////////////////
-void goo::SoundManager::loadSounds()
+void goo::SoundManager::loadSounds(bool debug)
 {
-	std::cout << "Sounds before load : " << m_soundMap.size() << std::endl;
+	if (debug)
+	{
+		std::cout << "Sounds before load : " << m_soundMap.size() << std::endl;
+	}
 	//Store json file in JSONValue m_root
 	readJSONFile("AssetPaths.json");
 	//check how many elements are under the 'Textures' heading
@@ -104,7 +110,8 @@ void goo::SoundManager::loadSounds()
 		m_paths[i] = m_root["Assets"]["Sounds"][i]["Path"].asString().c_str();
 		load(m_names[i], m_paths[i]);
 	}
-	std::cout << "Sounds after load : " << m_soundMap.size() << std::endl;
-	bool check = m_soundMap.find("Test") != m_soundMap.end();
-	std::cout << "Check if text.wav worked : " << check << std::endl;
+	if (debug)
+	{
+		std::cout << "Sounds after load : " << m_soundMap.size() << std::endl;
+	}
 }

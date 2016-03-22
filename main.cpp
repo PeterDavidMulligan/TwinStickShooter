@@ -11,7 +11,14 @@
 #include "SFML\Graphics.hpp"
 #include "Screens.h"
 #include "TwinStickShooter\AssetManager.h"
-
+////////////////////////////////////////////////////////////
+// Enums
+////////////////////////////////////////////////////////////
+enum Screens
+{
+	Test,
+	ControllerDebug
+};
 ////////////////////////////////////////////////////////////
 ///	\brief main is the root function for the game
 ///
@@ -27,7 +34,7 @@ int main()
 	goo::AssetManager assets;
 
 	//Screens Setup
-	int currentScreen = 1;
+	int currentScreen = Screens::Test;
 	std::vector<goo::Screen*> screenContainer;	//Contains all the screens
 	goo::TestScreen testScreen(window, assets, currentScreen);
 	screenContainer.push_back(&testScreen);

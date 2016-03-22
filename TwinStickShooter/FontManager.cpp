@@ -82,10 +82,16 @@ const sf::Font& goo::FontManager::get(std::string id) const
 ///	\brief Loads all the fonts listed in the JSON file
 /// "AssetPaths.json"
 ///
+///	\param debug (optional) Prints how many fonts are in the
+/// map before and after load to console
+///
 ////////////////////////////////////////////////////////////
-void goo::FontManager::loadFonts()
+void goo::FontManager::loadFonts(bool debug)
 {
-	std::cout << "Fonts before load : " << m_fontMap.size() << std::endl;
+	if (debug)
+	{
+		std::cout << "Fonts before load : " << m_fontMap.size() << std::endl;
+	}	
 	//Store json file in JSONValue m_root
 	readJSONFile("AssetPaths.json");
 	//check how many elements are under the 'Textures' heading
@@ -100,5 +106,8 @@ void goo::FontManager::loadFonts()
 		m_paths[i] = m_root["Assets"]["Fonts"][i]["Path"].asString().c_str();
 		load(m_names[i], m_paths[i]);
 	}
-	std::cout << "Fonts after load : " << m_fontMap.size() << std::endl;
+	if (debug)
+	{
+		std::cout << "Fonts after load : " << m_fontMap.size() << std::endl;
+	}
 }

@@ -25,7 +25,7 @@ namespace goo
 	private:
 		std::map<std::string,	//key
 			std::unique_ptr<sf::SoundBuffer >> m_soundMap;	//value
-		void loadSounds();
+		void loadSounds(bool debug = false);
 	public:
 		SoundManager();
 		~SoundManager();

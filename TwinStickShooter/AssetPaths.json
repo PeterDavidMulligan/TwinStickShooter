@@ -3,7 +3,6 @@
     {
         "Textures": 
         [
-            { "Name": "Particle", "Path": "../Assets/Art/Particle.png" },
             { "Name": "Player", "Path": "../Assets/Art/Player.png" }
         ],
         "Fonts": 

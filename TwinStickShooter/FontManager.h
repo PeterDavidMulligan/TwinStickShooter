@@ -24,7 +24,7 @@ namespace goo
 	private:
 		std::map<std::string,	//key
 			std::unique_ptr<sf::Font >> m_fontMap;	//value
-		void loadFonts();
+		void loadFonts(bool debug = false);
 	public:
 		FontManager();
 		~FontManager();

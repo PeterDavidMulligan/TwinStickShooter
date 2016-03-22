@@ -23,7 +23,7 @@ namespace goo
 	private:
 		std::map<std::string,
 			std::unique_ptr<sf::Texture>> m_textureMap;
-		void loadTextures();
+		void loadTextures(bool debug = false);
 		
 	public:
 		TextureManager();
