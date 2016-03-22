@@ -24,6 +24,28 @@ namespace goo
 		Player1,
 		Player2
 	};
+
+	////////////////////////////////////////////////////////////
+	///	\brief Buttons mapping SFML numbered buttons to their
+	/// xbox equivalents
+	///
+	////////////////////////////////////////////////////////////
+	enum Button
+	{
+		Y,
+		B,
+		A,
+		X,
+		LB,
+		RB,
+		LT,
+		RT,
+		BACK,
+		L3,	//Xbox doesnt seem to have a name for them apart from LeftAnalogStick
+		R3,	//this seemed clearer
+		START,
+		HOME
+	};
 	////////////////////////////////////////////////////////////
 	///	\brief Class for querying the gamepad state with static
 	///	functions
@@ -37,8 +59,13 @@ namespace goo
 		////////////////////////////////////////////////////////////
 		static sf::Vector2f rightStickHeadingVector(goo::ControllerID player);
 		static sf::Vector2f leftStickHeadingVector(goo::ControllerID player);
+		static float rightStickDegrees(goo::ControllerID player);
+		static float leftStickDegrees(goo::ControllerID player);
+		static float rightStickRadians(goo::ControllerID player);
+		static float leftStickRadians(goo::ControllerID player);
 		static float degreesToRadians(float degrees);
 		static float radiansToDegrees(float radians);
+		static bool pressed(goo::ControllerID player, Button button);
 	};
 }
 #endif

@@ -27,7 +27,7 @@ int main()
 	goo::AssetManager assets;
 
 	//Screens Setup
-	int currentScreen = 0;
+	int currentScreen = 1;
 	std::vector<goo::Screen*> screenContainer;	//Contains all the screens
 	goo::TestScreen testScreen(window, assets, currentScreen);
 	screenContainer.push_back(&testScreen);
