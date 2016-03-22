@@ -91,6 +91,7 @@ void goo::TestScreen::update(sf::Time elapsedTime)
 	}
 	m_sprite.move(m_velocity.x * elapsedTime.asSeconds() * m_speed, m_velocity.y * elapsedTime.asSeconds() * m_speed);
 	rotateToHeading();
+
 }
 
 ////////////////////////////////////////////////////////////
