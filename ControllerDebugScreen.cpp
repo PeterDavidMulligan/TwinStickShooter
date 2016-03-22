@@ -49,44 +49,48 @@ void goo::ControllerDebugScreen::initialise()
 	//Calculate how many texts are needed
 	int buttonCount = sf::Joystick::getButtonCount(m_displayedController);
 
-	//Create sf::Text for each button
-	m_buttonTexts = new sf::Text[buttonCount + sf::Joystick::AxisCount];
-	for (int i = 0; i < buttonCount; i++)
+	//if a controller is connected create and instatiate m_buttonTexts
+	if (buttonCount > 0)
 	{
-		m_buttonTexts[i] = sf::Text();
-		m_buttonTexts[i].setFont(*m_fontPtr);
-		m_buttonTexts[i].setColor(sf::Color::Red);
-		m_buttonTexts[i].setScale(sf::Vector2f(0.75, 0.75));
-		//Create the string using a stream string to
-		//concantenate ints and strings
-		std::stringstream buttonString;
-		buttonString << "Button " << i << " : ";
-		m_buttonTexts[i].setString(buttonString.str());
-		//Set origin to centre
-		m_buttonTexts[i].setOrigin(m_buttonTexts[i].getLocalBounds().width / 2, m_buttonTexts[i].getLocalBounds().height / 2);
-		//Set text's position to be evenly spaced down the center of the screen
-		int x = 100;
-		int y = (m_buttonTexts[i].getLocalBounds().height * 1.1) * (i + 1);
-		m_buttonTexts[i].setPosition(sf::Vector2f(x, y));
-	}
-	for (int i = 0; i < sf::Joystick::AxisCount; i++)
-	{
-		m_buttonTexts[buttonCount + i] = sf::Text();
-		m_buttonTexts[buttonCount + i].setFont(*m_fontPtr);
-		m_buttonTexts[buttonCount + i].setColor(sf::Color::Red);
-		m_buttonTexts[i].setScale(sf::Vector2f(0.75, 0.75));
-		//Create the string using a stream string to
-		//concantenate ints and strings
-		std::stringstream buttonString;
-		buttonString << "Axis " << i << " : ";
-		m_buttonTexts[buttonCount + i].setString(buttonString.str());
-		//Set origin to centre
-		m_buttonTexts[buttonCount + i].setOrigin(m_buttonTexts[buttonCount + i].getLocalBounds().width / 2,
-			m_buttonTexts[buttonCount + i].getLocalBounds().height / 2);
-		//Set text's position to be evenly spaced down the center of the screen
-		int x = m_window.getSize().x / 2;
-		int y = (m_buttonTexts[buttonCount + i].getLocalBounds().height * 1.1) * (i + 1);
-		m_buttonTexts[buttonCount + i].setPosition(sf::Vector2f(x, y));
+		//Create sf::Text for each button
+		m_buttonTexts = new sf::Text[buttonCount + sf::Joystick::AxisCount];
+		for (int i = 0; i < buttonCount; i++)
+		{
+			m_buttonTexts[i] = sf::Text();
+			m_buttonTexts[i].setFont(*m_fontPtr);
+			m_buttonTexts[i].setColor(sf::Color::Red);
+			m_buttonTexts[i].setScale(sf::Vector2f(0.75, 0.75));
+			//Create the string using a stream string to
+			//concantenate ints and strings
+			std::stringstream buttonString;
+			buttonString << "Button " << i << " : ";
+			m_buttonTexts[i].setString(buttonString.str());
+			//Set origin to centre
+			m_buttonTexts[i].setOrigin(m_buttonTexts[i].getLocalBounds().width / 2, m_buttonTexts[i].getLocalBounds().height / 2);
+			//Set text's position to be evenly spaced down the center of the screen
+			int x = 100;
+			int y = (m_buttonTexts[i].getLocalBounds().height * 1.1) * (i + 1);
+			m_buttonTexts[i].setPosition(sf::Vector2f(x, y));
+		}
+		for (int i = 0; i < sf::Joystick::AxisCount; i++)
+		{
+			m_buttonTexts[buttonCount + i] = sf::Text();
+			m_buttonTexts[buttonCount + i].setFont(*m_fontPtr);
+			m_buttonTexts[buttonCount + i].setColor(sf::Color::Red);
+			m_buttonTexts[i].setScale(sf::Vector2f(0.75, 0.75));
+			//Create the string using a stream string to
+			//concantenate ints and strings
+			std::stringstream buttonString;
+			buttonString << "Axis " << i << " : ";
+			m_buttonTexts[buttonCount + i].setString(buttonString.str());
+			//Set origin to centre
+			m_buttonTexts[buttonCount + i].setOrigin(m_buttonTexts[buttonCount + i].getLocalBounds().width / 2,
+				m_buttonTexts[buttonCount + i].getLocalBounds().height / 2);
+			//Set text's position to be evenly spaced down the center of the screen
+			int x = m_window.getSize().x / 2;
+			int y = (m_buttonTexts[buttonCount + i].getLocalBounds().height * 1.1) * (i + 1);
+			m_buttonTexts[buttonCount + i].setPosition(sf::Vector2f(x, y));
+		}
 	}
 }
 
@@ -113,21 +117,25 @@ void goo::ControllerDebugScreen::input(sf::Event e)
 void goo::ControllerDebugScreen::update(sf::Time elapsedTime)
 {
 	int buttonCount = sf::Joystick::getButtonCount(m_displayedController);
-	for (int i = 0; i < buttonCount; i++)
+	//if a controller is connected update all the buttons
+	if (buttonCount > 0)
 	{
-		//Create the string using a stream string to
-		//concantenate ints and strings
-		std::stringstream buttonString;
-		buttonString << "Button " << i << " : " << sf::Joystick::isButtonPressed(m_displayedController, i);
-		m_buttonTexts[i].setString(buttonString.str());
-	}
-	for (int i = 0; i < sf::Joystick::AxisCount; i++)
-	{
-		//Create the string using a stream string to
-		//concantenate ints and strings
-		std::stringstream axisString;
-		axisString << "Axis : " << i << " : " << sf::Joystick::getAxisPosition(m_displayedController, static_cast<sf::Joystick::Axis>(i));
-		m_buttonTexts[buttonCount + i].setString(axisString.str());
+		for (int i = 0; i < buttonCount; i++)
+		{
+			//Create the string using a stream string to
+			//concantenate ints and strings
+			std::stringstream buttonString;
+			buttonString << "Button " << i << " : " << sf::Joystick::isButtonPressed(m_displayedController, i);
+			m_buttonTexts[i].setString(buttonString.str());
+		}
+		for (int i = 0; i < sf::Joystick::AxisCount; i++)
+		{
+			//Create the string using a stream string to
+			//concantenate ints and strings
+			std::stringstream axisString;
+			axisString << "Axis : " << i << " : " << sf::Joystick::getAxisPosition(m_displayedController, static_cast<sf::Joystick::Axis>(i));
+			m_buttonTexts[buttonCount + i].setString(axisString.str());
+		}
 	}
 }
 
@@ -138,13 +146,17 @@ void goo::ControllerDebugScreen::update(sf::Time elapsedTime)
 void goo::ControllerDebugScreen::draw()
 {
 	int buttonCount = sf::Joystick::getButtonCount(m_displayedController);
-	for (int i = 0; i < buttonCount; i++)
+	//if a controller is connected draw all the button texts
+	if (buttonCount > 0)
 	{
-		m_window.draw(m_buttonTexts[i]);
-	}
-	for (int i = 0; i < sf::Joystick::AxisCount; i++)
-	{
-		m_window.draw(m_buttonTexts[buttonCount + i]);
+		for (int i = 0; i < buttonCount; i++)
+		{
+			m_window.draw(m_buttonTexts[i]);
+		}
+		for (int i = 0; i < sf::Joystick::AxisCount; i++)
+		{
+			m_window.draw(m_buttonTexts[buttonCount + i]);
+		}
 	}
 }
 
