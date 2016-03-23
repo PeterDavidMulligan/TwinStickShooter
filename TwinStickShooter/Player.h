@@ -24,12 +24,13 @@ namespace goo
 		////////////////////////////////////////////////////////////
 		// Member Variables
 		////////////////////////////////////////////////////////////
+		goo::AssetManager& m_assets;
 		sf::Sprite m_sprite;
 		sf::Vector2f m_velocity;
-		float m_speed = 2.5;
-		float m_rotationSpeed = 15;
-		float m_heading = 0;
-		float m_friction = 0.6;
+		float m_speed;
+		float m_rotationSpeed;
+		float m_heading;
+		float m_friction;
 
 		////////////////////////////////////////////////////////////
 		// Private Functions
@@ -41,7 +42,6 @@ namespace goo
 		////////////////////////////////////////////////////////////
 		// Constructor/Destructor
 		////////////////////////////////////////////////////////////
-		Player();
 		Player(goo::AssetManager& assets);
 		Player(sf::Vector2f position, goo::AssetManager& assets);
 		~Player();

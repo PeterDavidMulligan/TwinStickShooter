@@ -20,6 +20,14 @@ goo::Screen(window, assets, currentScreen)
 }
 
 ////////////////////////////////////////////////////////////
+// Constructor
+////////////////////////////////////////////////////////////
+goo::TestScreen::~TestScreen()
+{
+	delete m_player;
+}
+
+////////////////////////////////////////////////////////////
 // Public Functions
 ////////////////////////////////////////////////////////////
 
@@ -29,7 +37,7 @@ goo::Screen(window, assets, currentScreen)
 ////////////////////////////////////////////////////////////
 void goo::TestScreen::initialise()
 {
-	m_player = Player(m_assets);
+	m_player = new Player(m_assets);
 }
 
 ////////////////////////////////////////////////////////////
@@ -45,7 +53,7 @@ void goo::TestScreen::input(sf::Event e)
 {
 	checkForScreenClose(e);
 
-	m_player.input(e);
+	m_player->input(e);
 
 }
 
@@ -57,7 +65,7 @@ void goo::TestScreen::input(sf::Event e)
 ////////////////////////////////////////////////////////////
 void goo::TestScreen::update(sf::Time elapsedTime)
 {
-	m_player.update(elapsedTime);
+	m_player->update(elapsedTime);
 }
 
 ////////////////////////////////////////////////////////////
@@ -67,5 +75,5 @@ void goo::TestScreen::update(sf::Time elapsedTime)
 void goo::TestScreen::draw()
 {
 	m_window.clear(sf::Color::White);
-	m_player.draw(m_window);
+	m_player->draw(m_window);
 }

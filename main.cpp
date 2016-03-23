@@ -28,8 +28,9 @@ enum Screens
 int main()
 {
 	//Window setup
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Twin Stick" /*, sf::Style::Fullscreen*/);
 	sf::RenderWindow inputDebugConsole(sf::VideoMode(800, 600), "Controller Debug");
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Twin Stick" /*, sf::Style::Fullscreen*/);
+	
 	window.setVerticalSyncEnabled(true);
 
 	//Asset repository
@@ -71,8 +72,8 @@ int main()
 			screenContainer.at(currentScreen)->draw();		
 			screenContainer.at(debugScreen)->draw();
 			//Display current frame
-			window.display();
 			inputDebugConsole.display();
+			window.display();
 			//Reset timer
 			elapsedTime = elapsedTime.Zero;
 		}

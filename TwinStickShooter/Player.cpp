@@ -13,15 +13,14 @@
 ////////////////////////////////////////////////////////////
 // Constructor/Destructor
 ////////////////////////////////////////////////////////////
-goo::Player::Player(){}
-goo::Player::Player(goo::AssetManager& assets)
+goo::Player::Player(goo::AssetManager& assets) :
+m_assets(assets)
 {
-	m_sprite.setTexture(assets.getTexture("Player"));
 	initialise();
 }
-goo::Player::Player(sf::Vector2f position, goo::AssetManager& assets)
+goo::Player::Player(sf::Vector2f position, goo::AssetManager& assets) :
+m_assets(assets)
 {
-	m_sprite.setTexture(assets.getTexture("Player"));
 	m_sprite.setPosition(position);
 	initialise();
 }
@@ -41,8 +40,13 @@ goo::Player::~Player()
 ////////////////////////////////////////////////////////////
 void goo::Player::initialise()
 {
+	m_sprite.setTexture(m_assets.getTexture("Player"));
 	m_sprite.setOrigin(m_sprite.getLocalBounds().width / 2,
 		m_sprite.getLocalBounds().height / 2);
+	m_speed = m_assets.getValue("PlayerSpeed");
+	m_rotationSpeed = m_assets.getValue("PlayerRotationSpeed");
+	m_heading = 0;
+	m_friction = m_assets.getValue("PlayerFriction");
 }
 
 ////////////////////////////////////////////////////////////
