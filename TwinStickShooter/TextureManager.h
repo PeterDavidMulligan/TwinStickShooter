@@ -27,7 +27,6 @@ namespace goo
 		
 	public:
 		TextureManager();
-		~TextureManager();
 		void load(std::string id, const std::string path);
 		sf::Texture& get(std::string id);
 		const sf::Texture& get(std::string id) const;

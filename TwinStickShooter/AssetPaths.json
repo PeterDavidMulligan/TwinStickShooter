@@ -3,15 +3,15 @@
     {
         "Textures": 
         [
-            { "Name": "Player", "Path": "../Assets/Art/Player.png" }
+            { "ID": "Player", "Path": "../Assets/Art/Player.png" }
         ],
         "Fonts": 
         [
-            { "Name": "KenPixel", "Path": "../Assets/Fonts/KenPixel.ttf" }
+            { "ID": "KenPixel", "Path": "../Assets/Fonts/KenPixel.ttf" }
         ],
         "Sounds": 
         [
-            { "Name": "Test", "Path": "../Assets/Sounds/Test.wav" }
+            { "ID": "Test", "Path": "../Assets/Sounds/Test.wav" }
         ]
     }
 

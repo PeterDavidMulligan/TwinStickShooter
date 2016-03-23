@@ -19,15 +19,6 @@ goo::TextureManager::TextureManager()
 {
 	loadTextures();
 }
-////////////////////////////////////////////////////////////
-// Destructor
-////////////////////////////////////////////////////////////
-goo::TextureManager::~TextureManager()
-{
-	delete[] m_names;
-	delete[] m_paths;
-}
-
 
 ////////////////////////////////////////////////////////////
 ///	\brief Loads a texture from file @param path into the
@@ -99,14 +90,14 @@ void goo::TextureManager::loadTextures(bool debug)
 	//check how many elements are under the 'Textures' heading
 	int elements = m_root["Assets"]["Textures"].size();
 	//Allocate space on the heap for 2 string arrays of size 'elements'
-	m_names = new std::string[elements];
-	m_paths = new std::string[elements];
+	m_firstValue = new std::string[elements];
+	m_secondValue = new std::string[elements];
 	//Loop through elements to store their values
 	for (int i = 0; i < elements; i++)
 	{
-		m_names[i] = m_root["Assets"]["Textures"][i]["Name"].asString().c_str();
-		m_paths[i] = m_root["Assets"]["Textures"][i]["Path"].asString().c_str();
-		load(m_names[i], m_paths[i]);
+		m_firstValue[i] = m_root["Assets"]["Textures"][i]["ID"].asString().c_str();
+		m_secondValue[i] = m_root["Assets"]["Textures"][i]["Path"].asString().c_str();
+		load(m_firstValue[i], m_secondValue[i]);
 	}
 	if (debug)
 	{

@@ -19,14 +19,6 @@ goo::SoundManager::SoundManager()
 {
 	loadSounds();
 }
-////////////////////////////////////////////////////////////
-// Destructor
-////////////////////////////////////////////////////////////
-goo::SoundManager::~SoundManager()
-{
-	delete[] m_names;
-	delete[] m_paths;
-}
 
 ////////////////////////////////////////////////////////////
 ///	\brief Loads a sound from file @param path into the
@@ -98,17 +90,17 @@ void goo::SoundManager::loadSounds(bool debug)
 	//check how many elements are under the 'Textures' heading
 	int elements = m_root["Assets"]["Textures"].size();
 	//Allocate space on the heap for 2 string arrays of size 'elements'
-	m_names = new std::string[elements];
-	m_paths = new std::string[elements];
+	m_firstValue = new std::string[elements];
+	m_secondValue = new std::string[elements];
 	//Loop through elements to store their values
 	//When loading for sounds, for some reason it tries
 	//to load an extra sound with an empty string. -1 from
 	//elements to eliminate this
 	for (int i = 0; i < elements - 1; i++)
 	{
-		m_names[i] = m_root["Assets"]["Sounds"][i]["Name"].asString().c_str();
-		m_paths[i] = m_root["Assets"]["Sounds"][i]["Path"].asString().c_str();
-		load(m_names[i], m_paths[i]);
+		m_firstValue[i] = m_root["Assets"]["Sounds"][i]["ID"].asString().c_str();
+		m_secondValue[i] = m_root["Assets"]["Sounds"][i]["Path"].asString().c_str();
+		load(m_firstValue[i], m_secondValue[i]);
 	}
 	if (debug)
 	{

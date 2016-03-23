@@ -13,6 +13,7 @@
 #include "TextureManager.h"
 #include "SoundManager.h"
 #include "FontManager.h"
+#include "GameDataManager.h"
 
 namespace goo
 {
@@ -27,10 +28,13 @@ namespace goo
 		goo::TextureManager m_textures;
 		goo::SoundManager m_sounds;
 		goo::FontManager m_fonts;
+		goo::GameDataManager m_data;
 	public:
 		sf::Texture& getTexture(std::string id);
 		sf::SoundBuffer& getSoundBuffer(std::string id);
 		sf::Font& getFont(std::string id);
+		std::string& getString(std::string id);
+		float& getValue(std::string id);
 	};
 }
 #endif

@@ -145,6 +145,7 @@ void goo::ControllerDebugScreen::update(sf::Time elapsedTime)
 ////////////////////////////////////////////////////////////
 void goo::ControllerDebugScreen::draw()
 {
+	m_window.clear(sf::Color::Black);
 	int buttonCount = sf::Joystick::getButtonCount(m_displayedController);
 	//if a controller is connected draw all the button texts
 	if (buttonCount > 0)

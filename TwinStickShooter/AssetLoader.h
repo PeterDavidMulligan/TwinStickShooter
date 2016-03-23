@@ -22,11 +22,15 @@ namespace goo
 		////////////////////////////////////////////////////////////
 		// Member Variables
 		////////////////////////////////////////////////////////////
+	public:
+		~AssetLoader();
 	protected:
 		Json::Value m_root;	//Stores the JSON file
 		Json::Reader m_reader;	//Used by sublclasses to parse m_root
-		std::string *m_paths;	//Array of paths to assets loaded by subclasses
-		std::string *m_names;	//Array unique ids for assets loaded by subclasses
+		std::string *m_firstValue;
+		std::string *m_secondValue;
+		std::string *m_numericalValueID;
+		std::string *m_numericalValue;
 		void readJSONFile(std::string path, bool debug = false);	//reads json into m_root
 	};
 }

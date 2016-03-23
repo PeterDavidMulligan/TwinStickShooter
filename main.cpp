@@ -16,8 +16,9 @@
 ////////////////////////////////////////////////////////////
 enum Screens
 {
-	Test,
-	ControllerDebug
+	ControllerDebug,
+	Test
+	
 };
 ////////////////////////////////////////////////////////////
 ///	\brief main is the root function for the game
@@ -28,6 +29,7 @@ int main()
 {
 	//Window setup
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Twin Stick" /*, sf::Style::Fullscreen*/);
+	sf::RenderWindow inputDebugConsole(sf::VideoMode(800, 600), "Controller Debug");
 	window.setVerticalSyncEnabled(true);
 
 	//Asset repository
@@ -35,10 +37,11 @@ int main()
 
 	//Screens Setup
 	int currentScreen = Screens::Test;
+	int debugScreen = Screens::ControllerDebug;
 	std::vector<goo::Screen*> screenContainer;	//Contains all the screens
 	goo::TestScreen testScreen(window, assets, currentScreen);
 	screenContainer.push_back(&testScreen);
-	goo::ControllerDebugScreen controllerDebugScreen(window, assets, currentScreen);
+	goo::ControllerDebugScreen controllerDebugScreen(inputDebugConsole, assets, debugScreen);
 	screenContainer.push_back(&controllerDebugScreen);
 	
 	//Clock setup & FPS setup
@@ -54,6 +57,7 @@ int main()
 		while (window.pollEvent(e))
 		{	//Send input to the current screen
 			screenContainer.at(currentScreen)->input(e);
+			screenContainer.at(debugScreen)->input(e);
 		}
 
 		//GAME LOOP
@@ -62,11 +66,13 @@ int main()
 		{			
 			//Update current screen
 			screenContainer.at(currentScreen)->update(elapsedTime);
+			screenContainer.at(debugScreen)->update(elapsedTime);
 			//Draw the current screen
-			window.clear(sf::Color::Black);
 			screenContainer.at(currentScreen)->draw();		
+			screenContainer.at(debugScreen)->draw();
 			//Display current frame
 			window.display();
+			inputDebugConsole.display();
 			//Reset timer
 			elapsedTime = elapsedTime.Zero;
 		}

@@ -18,14 +18,6 @@ goo::FontManager::FontManager()
 {
 	loadFonts();
 }
-////////////////////////////////////////////////////////////
-// Destructor
-////////////////////////////////////////////////////////////
-goo::FontManager::~FontManager()
-{
-	delete[] m_names;
-	delete[] m_paths;
-}
 
 ////////////////////////////////////////////////////////////
 ///	\brief Loads a font from file @param path into the
@@ -97,14 +89,14 @@ void goo::FontManager::loadFonts(bool debug)
 	//check how many elements are under the 'Textures' heading
 	int elements = m_root["Assets"]["Fonts"].size();
 	//Allocate space on the heap for 2 string arrays of size 'elements'
-	m_names = new std::string[elements];
-	m_paths = new std::string[elements];
+	m_firstValue = new std::string[elements];
+	m_secondValue = new std::string[elements];
 	//Loop through elements to store their values
 	for (int i = 0; i < elements; i++)
 	{
-		m_names[i] = m_root["Assets"]["Fonts"][i]["Name"].asString().c_str();
-		m_paths[i] = m_root["Assets"]["Fonts"][i]["Path"].asString().c_str();
-		load(m_names[i], m_paths[i]);
+		m_firstValue[i] = m_root["Assets"]["Fonts"][i]["ID"].asString().c_str();
+		m_secondValue[i] = m_root["Assets"]["Fonts"][i]["Path"].asString().c_str();
+		load(m_firstValue[i], m_secondValue[i]);
 	}
 	if (debug)
 	{

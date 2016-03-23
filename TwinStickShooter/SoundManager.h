@@ -28,7 +28,6 @@ namespace goo
 		void loadSounds(bool debug = false);
 	public:
 		SoundManager();
-		~SoundManager();
 		void load(std::string id, const std::string path);
 		sf::SoundBuffer& get(std::string id);
 		const sf::SoundBuffer& get(std::string id) const;

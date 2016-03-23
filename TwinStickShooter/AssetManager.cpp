@@ -43,3 +43,27 @@ sf::Font& goo::AssetManager::getFont(std::string id)
 {
 	return m_fonts.get(id);
 }
+////////////////////////////////////////////////////////////
+///	\brief Returns a reference to the string
+///
+/// \param id Unique identifier of string id
+///
+/// \return A reference to the string id
+///
+////////////////////////////////////////////////////////////
+std::string& goo::AssetManager::getString(std::string id)
+{
+	return m_data.getString(id);
+}
+////////////////////////////////////////////////////////////
+///	\brief Returns a reference to a game data value
+///
+/// \param id Unique identifier of value id
+///
+/// \return A reference to the value id
+///
+////////////////////////////////////////////////////////////
+float& goo::AssetManager::getValue(std::string id)
+{
+	return m_data.getValue(id);
+}

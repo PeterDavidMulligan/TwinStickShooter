@@ -25,9 +25,9 @@ namespace goo
 		std::map<std::string,	//key
 			std::unique_ptr<sf::Font >> m_fontMap;	//value
 		void loadFonts(bool debug = false);
+		
 	public:
 		FontManager();
-		~FontManager();
 		void load(std::string id, const std::string path);
 		sf::Font& get(std::string id);
 		const sf::Font& get(std::string id) const;

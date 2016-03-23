@@ -78,6 +78,7 @@
     <ClCompile Include="AssetLoader.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="GameDataManager.cpp" />
     <ClCompile Include="jsoncpp.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SoundManager.cpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="AssetLoader.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="FontManager.h" />
+    <ClInclude Include="GameDataManager.h" />
     <ClInclude Include="JSON\json-forwards.h" />
     <ClInclude Include="JSON\json.h" />
     <ClInclude Include="Player.h" />
@@ -107,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AssetPaths.json" />
+    <None Include="GameData.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

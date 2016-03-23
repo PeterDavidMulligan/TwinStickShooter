@@ -1,0 +1,16 @@
+{
+    "GameData": 
+    {
+        "Strings": 
+        [
+            { "ID": "PlayerName", "Value": "Jerome" }
+        ],
+        "Numbers": 
+        [
+            { "ID": "PlayerSpeed", "Value": 2.5 },
+            { "ID": "PlayerRotationSpeed", "Value": 15.0 },
+            { "ID": "PlayerFriction", "Value": 0.6 }
+        ]
+    }
+
+}

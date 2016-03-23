@@ -12,6 +12,17 @@
 #include "AssetLoader.h"
 
 ////////////////////////////////////////////////////////////
+// Destructor
+////////////////////////////////////////////////////////////
+goo::AssetLoader::~AssetLoader()
+{
+	delete[] m_firstValue;
+	delete[] m_secondValue;
+	delete[] m_numericalValueID;
+	delete[] m_numericalValue;
+}
+
+////////////////////////////////////////////////////////////
 ///	\brief Reads a JSON file into m_root
 ///
 /// \param path Relative path to the JSON file
