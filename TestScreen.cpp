@@ -38,6 +38,8 @@ goo::TestScreen::~TestScreen()
 void goo::TestScreen::initialise()
 {
 	m_player = new Player(m_assets);
+	m_velocityText.setFont(m_assets.getFont("KenPixel"));
+	m_velocityText.setColor(sf::Color::Black);
 }
 
 ////////////////////////////////////////////////////////////
@@ -52,9 +54,6 @@ void goo::TestScreen::initialise()
 void goo::TestScreen::input(sf::Event e)
 {
 	checkForScreenClose(e);
-
-	m_player->input(e);
-
 }
 
 ////////////////////////////////////////////////////////////
@@ -65,6 +64,10 @@ void goo::TestScreen::input(sf::Event e)
 ////////////////////////////////////////////////////////////
 void goo::TestScreen::update(sf::Time elapsedTime)
 {
+	std::string m_velocityString;
+	sf::Vector2f v = m_player->getVelocity();
+	m_velocityString = "Vx: " + std::to_string(v.x) + " Vy: " + std::to_string(v.y);
+	m_velocityText.setString(m_velocityString);
 	m_player->update(elapsedTime);
 }
 
@@ -76,4 +79,5 @@ void goo::TestScreen::draw()
 {
 	m_window.clear(sf::Color::White);
 	m_player->draw(m_window);
+	m_window.draw(m_velocityText);
 }

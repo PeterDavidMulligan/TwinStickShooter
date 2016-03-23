@@ -1,15 +1,16 @@
 ////////////////////////////////////////////////////////////
 ///	Author: Peter Mulligan
-///	Date: 23/03/16
-///	Last Edit: 23/03/16
+///	Date: 22/03/16
+///	Last Edit: 22/03/16
 ////////////////////////////////////////////////////////////
-#ifndef ROTATINGSPRITE_HEADER
-#define ROTATINGSPRITE_HEADER
+#ifndef MOVINGSPRITE_HEADER
+#define MOVINGSPRITE_HEADER
 
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include "MovingSprite.h"
+#include "AssetManager.h"
+#include "..\Gamepad.h"
 
 ////////////////////////////////////////////////////////////
 ///	\brief Screen subclass for running tests
@@ -17,43 +18,43 @@
 ////////////////////////////////////////////////////////////
 namespace goo
 {
-	class RotatingSprite : public goo::MovingSprite
+	class MovingSprite
 	{
 	protected:
 		////////////////////////////////////////////////////////////
 		// Member Variables
 		////////////////////////////////////////////////////////////
-		float m_rotationSpeed;
-		float m_heading;
-
-		////////////////////////////////////////////////////////////
-		// Private Functions
-		////////////////////////////////////////////////////////////
-		void setFacing(const sf::Vector2f target);
-		void rotateToHeading();
+		goo::AssetManager& m_assets;
+		sf::Sprite m_sprite;
+		sf::Vector2f m_velocity;
+		float m_velocityDeadZone;
+		float m_speed;
+		float m_speedModifier;
 
 	public:
 		////////////////////////////////////////////////////////////
 		// Constructor/Destructor
 		////////////////////////////////////////////////////////////
-		RotatingSprite(goo::AssetManager& assets);
-		RotatingSprite(sf::Vector2f position, goo::AssetManager& assets);
-		~RotatingSprite();
+		MovingSprite(goo::AssetManager& assets);
+		MovingSprite(sf::Vector2f position, goo::AssetManager& assets);
+		~MovingSprite();
 
 		////////////////////////////////////////////////////////////
 		// Public Functions
 		////////////////////////////////////////////////////////////
-		void update(sf::Time elapsedTime);
+		virtual void update(sf::Time elapsedTime);
+		virtual void draw(sf::RenderWindow& window);
 
 		////////////////////////////////////////////////////////////
 		// Getter & Setter Functions
 		////////////////////////////////////////////////////////////
-		sf::Vector2f getPosition();
-		float getRotationSpeed();
-		float getHeading();
-		void setPosition(sf::Vector2f position);
-		void setRotationSpeed(float speed);
-		void setHeading(float heading);
+		sf::Vector2f getVelocity();
+		float getSpeed();
+		float getFriction();
+
+		void setVelocity(sf::Vector2f velocity);
+		void setSpeed(float speed);
+		void setFriction(float friction);
 	};
 }
 #endif

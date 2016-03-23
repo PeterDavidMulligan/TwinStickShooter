@@ -14,12 +14,12 @@
 // Constructor/Destructor
 ////////////////////////////////////////////////////////////
 goo::RotatingSprite::RotatingSprite(goo::AssetManager& assets) :
-m_assets(assets)
+goo::MovingSprite(assets)
 {
 
 }
 goo::RotatingSprite::RotatingSprite(sf::Vector2f position, goo::AssetManager& assets) :
-m_assets(assets)
+goo::MovingSprite(assets)
 {
 	m_sprite.setPosition(position);
 }
@@ -41,23 +41,8 @@ goo::RotatingSprite::~RotatingSprite()
 ////////////////////////////////////////////////////////////
 void goo::RotatingSprite::update(sf::Time elapsedTime)
 {
-	float rightX = round(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::R));
-	float rightY = round(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::V));
-
-	if (rightX > 50 || rightX < -50 || rightY > 50 || rightY < -50)
-	{
-		setFacing(sf::Vector2f(m_sprite.getPosition().x - rightX, m_sprite.getPosition().y - rightY));
-	}
 	rotateToHeading();
-}
-
-////////////////////////////////////////////////////////////
-///	\brief Draws assets to the sf::Renderwindow
-///
-////////////////////////////////////////////////////////////
-void goo::RotatingSprite::draw(sf::RenderWindow& window)
-{
-	window.draw(m_sprite);
+	goo::MovingSprite::update(elapsedTime);
 }
 
 ////////////////////////////////////////////////////////////

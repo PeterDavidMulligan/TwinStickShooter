@@ -19,15 +19,13 @@
 ////////////////////////////////////////////////////////////
 namespace goo
 {
-	class Player : RotatingSprite
+	class Player : public goo::RotatingSprite
 	{
 	private:
 		////////////////////////////////////////////////////////////
 		// Member Variables
 		////////////////////////////////////////////////////////////
-		sf::Vector2f m_velocity;
-		float m_speed;
-		float m_friction;
+		int m_analogDeadzone;
 
 	public:
 		////////////////////////////////////////////////////////////
@@ -41,20 +39,8 @@ namespace goo
 		// Public Functions
 		////////////////////////////////////////////////////////////
 		void initialise();
-		void input(sf::Event e);
+		void input();
 		void update(sf::Time elapsedTime);
-		void draw(sf::RenderWindow& window);
-
-		////////////////////////////////////////////////////////////
-		// Getter & Setter Functions
-		////////////////////////////////////////////////////////////
-		sf::Vector2f getVelocity();
-		float getSpeed();
-		float getFriction();
-
-		void setVelocity(sf::Vector2f velocity);
-		void setSpeed(float speed);
-		void setFriction(float friction);
 	};
 }
 #endif

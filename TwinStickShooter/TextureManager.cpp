@@ -40,8 +40,7 @@ void goo::TextureManager::load(std::string id, const std::string path)
 	//store it and then assert it (insert a breakpoint if !boolean) and print
 	//an error message if false
 	auto inserted = m_textureMap.insert(std::make_pair(id, std::move(texture)));//move so the original is in the map
-	assert(inserted.second,
-		"TextureManager::load : Failed to load (" + id + ") @ " + path + ". Possible id collision.");
+	assert(inserted.second);
 }
 
 ////////////////////////////////////////////////////////////
