@@ -3,13 +3,14 @@
 ///	Date: 22/03/16
 ///	Last Edit: 22/03/16
 ////////////////////////////////////////////////////////////
-#ifndef PLAYER_HEADER
-#define PLAYER_HEADER
+#ifndef ENEMY_HEADER
+#define ENEMY_HEADER
 
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
 #include "AssetManager.h"
+#include "Player.h"
 #include "..\Gamepad.h"
 
 ////////////////////////////////////////////////////////////
@@ -18,58 +19,45 @@
 ////////////////////////////////////////////////////////////
 namespace goo
 {
-	class Player
+	class Enemy
 	{
 	private:
 		////////////////////////////////////////////////////////////
 		// Member Variables
 		////////////////////////////////////////////////////////////
-		int m_analogDeadzone;
 		goo::AssetManager& m_assets;
+		goo::Player& m_player;
 		sf::Sprite m_sprite;
 		sf::Vector2f m_velocity;
-		float m_velocityDeadZone;
 		float m_speed;
-		float m_speedModifier;
-
-		float m_rotationSpeed;
-		float m_heading;
-
-		////////////////////////////////////////////////////////////
-		// Private Functions
-		////////////////////////////////////////////////////////////
-		void setFacing(const sf::Vector2f target);
-		void rotateToHeading();
+		float m_velocityDeadZone;
 
 	public:
 		////////////////////////////////////////////////////////////
 		// Constructor/Destructor
 		////////////////////////////////////////////////////////////
-		Player(goo::AssetManager& assets);
-		Player(sf::Vector2f position, goo::AssetManager& assets);
-		~Player();
+		Enemy(goo::Player& player, goo::AssetManager& assets);
+		Enemy(sf::Vector2f position, goo::Player& player, goo::AssetManager& assets);
+
 		////////////////////////////////////////////////////////////
 		// Public Functions
 		////////////////////////////////////////////////////////////
 		void initialise();
-		void input();
 		void draw(sf::RenderWindow& window);
 		void update(sf::Time elapsedTime);
 
+		sf::Vector2f getPosition();
 		sf::Vector2f getVelocity();
 		float getSpeed();
-		float getFriction();
+		sf::Sprite getSprite();
+		sf::Vector2f getScale();
 
+		void setPosition(sf::Vector2f position);
 		void setVelocity(sf::Vector2f velocity);
 		void setSpeed(float speed);
-		void setFriction(float friction);
-
-		sf::Vector2f getPosition();
-		float getRotationSpeed();
-		float getHeading();
-		void setPosition(sf::Vector2f position);
-		void setRotationSpeed(float speed);
-		void setHeading(float heading);
+		void setSprite(sf::Sprite sprite);
+		void setScale(sf::Vector2f scale);
+		
 	};
 }
 #endif

@@ -77,6 +77,7 @@
     <ClCompile Include="..\TestScreen.cpp" />
     <ClCompile Include="AssetLoader.cpp" />
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameDataManager.cpp" />
     <ClCompile Include="jsoncpp.cpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="..\TestScreen.h" />
     <ClInclude Include="AssetLoader.h" />
     <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="GameDataManager.h" />
     <ClInclude Include="JSON\json-forwards.h" />

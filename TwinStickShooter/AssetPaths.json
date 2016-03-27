@@ -3,7 +3,8 @@
     {
         "Textures": 
         [
-            { "ID": "Player", "Path": "../Assets/Art/Player.png" }
+            { "ID": "Player", "Path": "../Assets/Art/Player.png" },
+            { "ID": "Enemy", "Path": "../Assets/Art/Enemy.png" }
         ],
         "Fonts": 
         [

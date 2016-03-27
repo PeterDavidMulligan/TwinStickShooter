@@ -28,8 +28,6 @@ goo::Player::~Player()
 {
 
 }
-
-
 ////////////////////////////////////////////////////////////
 // Public Functions
 ////////////////////////////////////////////////////////////
@@ -46,7 +44,7 @@ void goo::Player::initialise()
 	m_speed = m_assets.getValue("PlayerSpeed");
 	m_rotationSpeed = m_assets.getValue("PlayerRotationSpeed");
 	m_heading = 0;
-	m_speedModifier = m_assets.getValue("PlayerSpeedMod");
+	m_speedModifier = m_assets.getValue("BaseSpeedMod");
 	m_velocityDeadZone = m_assets.getValue("VelocityDeadzone");
 	m_analogDeadzone = m_assets.getValue("AnalogDeadzone");
 }
@@ -84,6 +82,23 @@ void goo::Player::input()
 		setFacing(sf::Vector2f(m_sprite.getPosition().x - rightX,
 			m_sprite.getPosition().y - rightY));
 	}
+
+	float triggerPosition = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Z);
+	if (triggerPosition > 50 || triggerPosition < -50)
+	{
+		if (triggerPosition > 50)
+		{
+			m_speedModifier = m_assets.getValue("AimSpeedMod");
+		}
+		if (triggerPosition < 50)
+		{
+			m_speedModifier = m_assets.getValue("RunSpeedMod");
+		}
+	}
+	else
+	{
+		m_speedModifier = m_assets.getValue("BaseSpeedMod");
+	}
 }
 
 ////////////////////////////////////////////////////////////
@@ -94,8 +109,6 @@ void goo::Player::input()
 ////////////////////////////////////////////////////////////
 void goo::Player::update(sf::Time elapsedTime)
 {
-	input();
-
 	//Check the velocity is powerful enough to move the sprite
 	if ((m_velocity.x < m_velocityDeadZone && m_velocity.x > -m_velocityDeadZone) &&
 		(m_velocity.y < m_velocityDeadZone && m_velocity.y > -m_velocityDeadZone))

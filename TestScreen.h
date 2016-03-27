@@ -12,6 +12,7 @@
 #include "Gamepad.h"
 #include "Screen.h"
 #include "TwinStickShooter\Player.h"
+#include "TwinStickShooter\Enemy.h"
 
 ////////////////////////////////////////////////////////////
 ///	\brief Screen subclass for running tests
@@ -32,6 +33,7 @@ namespace goo
 		////////////////////////////////////////////////////////////
 		sf::Text m_velocityText;
 		goo::Player* m_player;
+		goo::Enemy* m_enemy;
 
 		////////////////////////////////////////////////////////////
 		// Public Functions

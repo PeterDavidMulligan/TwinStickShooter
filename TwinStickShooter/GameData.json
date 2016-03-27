@@ -8,11 +8,13 @@
         "Numbers": 
         [
             { "ID": "PlayerSpeed", "Value": 2.5 },
-            { "ID": "PlayerSpeedMod", "Value": 1.0 },
+            { "ID": "RunSpeedMod", "Value": 1.5 },
+            { "ID": "BaseSpeedMod", "Value": 1.0 },
+            { "ID": "AimSpeedMod", "Value": 0.5 },
             { "ID": "PlayerRotationSpeed", "Value": 15.0 },
             { "ID": "VelocityDeadzone", "Value": 20.0 },
-            { "ID": "AnalogDeadzone", "Value": 50.0 }
+            { "ID": "AnalogDeadzone", "Value": 50.0 },
+            { "ID": "EnemySpeed", "Value": 2.0 }
         ]
     }
-
 }
