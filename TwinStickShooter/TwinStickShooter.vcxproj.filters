@@ -93,12 +93,6 @@
     <ClCompile Include="GameDataManager.cpp">
       <Filter>Source Files\Assets</Filter>
     </ClCompile>
-    <ClCompile Include="RotatingSprite.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="MovingSprite.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JSON\json.h">
@@ -145,12 +139,6 @@
     </ClInclude>
     <ClInclude Include="GameDataManager.h">
       <Filter>Header Files\Assets</Filter>
-    </ClInclude>
-    <ClInclude Include="RotatingSprite.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="MovingSprite.h">
-      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
